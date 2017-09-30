@@ -50,4 +50,15 @@ public int firstDotThree(int colAccpt){
     return lineAccept;
 
 }
+
+public int secondDotOne(){
+    int colAccpt = -1;
+    for(int i=0; i<matrix[1].length;i++){
+        if(matrix[linhaFO][i].getCellSup().compareTo(BigDecimal.ZERO)>0){
+            colAccpt=i;
+        }
+    }
+
+    return colAccpt;
+}
 }
