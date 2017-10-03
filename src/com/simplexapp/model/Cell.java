@@ -25,7 +25,7 @@ public class Cell {
         return AceptCell;
     }
 
-    public Boolean idChkCellInf() {
+    public Boolean isChkCellInf() {
         return ChkCellInf;
     }
 
