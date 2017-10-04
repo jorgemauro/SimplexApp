@@ -29,7 +29,7 @@ public class Fases extends Table {
         }
         return colAcc;
     }
-public int firstDotThree(int colAccpt){
+public int firstOrTwoDotThree(int colAccpt){
         int lineAccept=-1;
         BigDecimal lessQ= new BigDecimal(Integer.MAX_VALUE);
         BigDecimal actQ= new BigDecimal(0);
@@ -71,24 +71,5 @@ public int secondDotTwo(int colAccept){
     return lineAccept;
 }
 
-public int secondDotThree( int colAccept){
-    int lineAccept=-1;
-    BigDecimal lessQ= new BigDecimal(Integer.MAX_VALUE);
-    BigDecimal actQ= new BigDecimal(0);
-    for (int i=0;i<matrix.length;i++){
-        BigDecimal mLchoose=matrix[i][colML].getCellSup();
-        BigDecimal colAcceptChoose=matrix[i][colAccept].getCellSup();
-
-        if(Change.signalComp(mLchoose,colAcceptChoose) && colAcceptChoose.compareTo(BigDecimal.ZERO)>0){
-            actQ=matrix[i][colML].getCellSup().divide(matrix[i][colAccept].getCellSup(),4, RoundingMode.HALF_UP);
-            if(actQ.compareTo(lessQ)<0){
-                lessQ=actQ;
-                lineAccept=i;
-                matrix[i][colAccept].setAceptCell(true);
-            }
-        }
-    }
-    return lineAccept;
-}
 
 }
