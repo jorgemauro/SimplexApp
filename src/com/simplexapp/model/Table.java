@@ -99,8 +99,55 @@ public class Table {
                 }
             }
         }
-
+public BigDecimal getChkCellInf( int line) {
+    Cell cell;
+    BigDecimal ans = new BigDecimal(0);
+    for (int i = 0; i < matrix[1].length; i++) {
+        cell = matrix[line][i];
+        if (cell.isChkCellInf()) {
+            ans = cell.getCellInf();
+        }
     }
+
+    return ans;
+}
+    public Boolean MlNegative(){
+        Boolean ans=false;
+        for(int i=1;i<matrix.length;i++){
+            if(matrix[i][colML].getCellSup().compareTo(BigDecimal.ZERO)<0){
+                ans=true;
+                break;
+            }
+        }
+        return ans;
+    }
+public void infForSuo(){
+
+}
+    public Cell[][] getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(Cell[][] matrix) {
+        this.matrix = matrix;
+    }
+
+    public void setbVar(int[] bVar) {
+        this.bVar = bVar;
+    }
+
+    public void setNbVar(int[] nbVar) {
+        this.nbVar = nbVar;
+    }
+
+    public int[] getbVar() {
+        return bVar;
+    }
+
+    public int[] getNbVar() {
+        return nbVar;
+    }
+}
 
 
 

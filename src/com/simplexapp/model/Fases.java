@@ -29,27 +29,6 @@ public class Fases extends Table {
         }
         return colAcc;
     }
-public int firstOrTwoDotThree(int colAccpt){
-        int lineAccept=-1;
-        BigDecimal lessQ= new BigDecimal(Integer.MAX_VALUE);
-        BigDecimal actQ= new BigDecimal(0);
-
-    for (int i=0;i<matrix.length;i++){
-        BigDecimal mLchoose=matrix[i][colML].getCellSup();
-        BigDecimal colAcceptChoose=matrix[i][colAccpt].getCellSup();
-
-        if(Change.signalComp(mLchoose,colAcceptChoose) && colAcceptChoose.compareTo(BigDecimal.ZERO)>0){
-            actQ=matrix[i][colML].getCellSup().divide(matrix[i][colAccpt].getCellSup(),4, RoundingMode.HALF_UP);
-            if(actQ.compareTo(lessQ)<0){
-                lessQ=actQ;
-                lineAccept=i;
-                matrix[i][colAccpt].setAceptCell(true);
-            }
-        }
-    }
-    return lineAccept;
-
-}
 
 public int secondDotOne(){
     int colAccpt = -1;
@@ -72,4 +51,34 @@ public int secondDotTwo(int colAccept){
 }
 
 
+public void inveseMatrix(int colAccept, int LineAccept){
+    Cell[][] matrixCpy= new Cell[matrix.length][matrix[1].length];
+
+    for (int i=0;i<matrixCpy.length;i++){
+        for (int j=0;j<matrixCpy[1].length;j++){
+
+        }
+    }
+}
+    public int firstOrTwoDotThree(int colAccpt){
+        int lineAccept=-1;
+        BigDecimal lessQ= new BigDecimal(Integer.MAX_VALUE);
+        BigDecimal actQ= new BigDecimal(0);
+
+        for (int i=0;i<matrix.length;i++){
+            BigDecimal mLchoose=matrix[i][colML].getCellSup();
+            BigDecimal colAcceptChoose=matrix[i][colAccpt].getCellSup();
+
+            if(Change.signalComp(mLchoose,colAcceptChoose) && colAcceptChoose.compareTo(BigDecimal.ZERO)>0){
+                actQ=matrix[i][colML].getCellSup().divide(matrix[i][colAccpt].getCellSup(),4, RoundingMode.HALF_UP);
+                if(actQ.compareTo(lessQ)<0){
+                    lessQ=actQ;
+                    lineAccept=i;
+                    matrix[i][colAccpt].setAceptCell(true);
+                }
+            }
+        }
+        return lineAccept;
+
+    }
 }
