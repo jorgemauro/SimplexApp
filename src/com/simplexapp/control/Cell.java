@@ -1,4 +1,4 @@
-package com.simplexapp.model;
+package com.simplexapp.control;
 
 import java.math.BigDecimal;
 /*

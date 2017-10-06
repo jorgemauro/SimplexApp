@@ -1,4 +1,4 @@
-package com.simplexapp.model.util;
+package com.simplexapp.control.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

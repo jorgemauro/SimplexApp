@@ -1,6 +1,6 @@
-package com.simplexapp.model;
+package com.simplexapp.control;
 
-import com.simplexapp.model.util.Change;
+import com.simplexapp.control.util.Change;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
