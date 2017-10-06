@@ -20,6 +20,9 @@ public class Cell {
     this.ChkCellSup=false;
     this.AceptCell=false;
     }
+    public Cell(){
+
+    }
     //is
     public Boolean isAceptCell() {
         return AceptCell;

@@ -121,8 +121,34 @@ public BigDecimal getChkCellInf( int line) {
         }
         return ans;
     }
-public void infForSuo(){
+public void infForSup( int colAccept, int lineAccept){
+        Cell[][] reMatrix=new Cell[matrix.length][matrix[1].length];
+        for(int i =0;i<matrix.length;i++){
+            for(int j=0;j<matrix[1].length;j++){
+                reMatrix[i][j]= new Cell();
+            }
+        }
 
+        for(int i=0;i<matrix.length;i++){
+            reMatrix[i][colAccept].setCellSup(matrix[lineAccept][i].getCellInf());
+        }
+
+    for(int i=0;i<matrix[1].length;i++){
+        reMatrix[lineAccept][i].setCellSup(matrix[i][colAccept].getCellInf());
+    }
+    matrix=reMatrix;
+
+}
+
+public void SumNotSupAndInf(Table T,int colAccept, int lineAccept){
+    Cell[][] matrix1 = T.getMatrix();
+    for (int i=0;i<matrix.length;i++){
+        for(int j=0;j<matrix[1].length;j++){
+            if(i!=lineAccept && j!=colAccept){
+                matrix[i][j].setCellSup(matrix1[i][j].getCellSup().stripTrailingZeros().add(matrix1[i][j].getCellInf().stripTrailingZeros()));
+            }
+        }
+    }
 }
     public Cell[][] getMatrix() {
         return matrix;
