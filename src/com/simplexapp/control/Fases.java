@@ -10,7 +10,7 @@ public class Fases extends Table {
 
     public int firstDotOne(){
         int lineAcc= -1;
-        for (int i=1; i < matrix.length;i++){
+        for (int i=1; i < matrix[1].length;i++){
             if(matrix[i][colML].getCellSup().compareTo(BigDecimal.ZERO)<0){
                 lineAcc=i;
                 break;
@@ -42,9 +42,10 @@ public int secondDotOne(){
 }
 public int secondDotTwo(int colAccept){
     int lineAccept=-1;
+    System.out.println(matrix.length);
     for (int i=0;i<matrix.length;i++){
         if(matrix[i][colML].getCellSup().compareTo(BigDecimal.ZERO)>0){
-            lineAccept=i;
+            return lineAccept=i;
         }
     }
     return lineAccept;
@@ -56,7 +57,6 @@ public void inveseMatrix(int colAccept, int LineAccept){
 
     for (int i=0;i<matrixCpy.length;i++){
         for (int j=0;j<matrixCpy[1].length;j++){
-
         }
     }
 }
