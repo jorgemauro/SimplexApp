@@ -21,6 +21,9 @@ public class SimplexExec {
                     colAccept=T.firstDotTwo(lineAccept);
                     if(colAccept>0){
                         TheLine=T.firstDotThree(colAccept);
+                        System.out.println("fim primeira fase");
+                        Change.PrintTable(T);
+                        System.out.println("--------------------------------------------------------------------");
                         SimplexExec.ChangeExec(TheLine,colAccept,T);
 
                     }else{
@@ -42,6 +45,10 @@ public class SimplexExec {
         NewT=T.changePostion(TheLine,colAccept);
         NewT.infForSup(TheLine,colAccept);
         NewT.SumNotSupAndInf(T,colAccept,TheLine);
+
+        System.out.println("fim troca");
+        Change.PrintTable(T);
+        System.out.println("--------------------------------------------------------------------");
         if(NewT.MlNegative()){
             SimplexExec.ExcFirst(NewT);
         }else {
@@ -67,7 +74,9 @@ public class SimplexExec {
             }
         }else{
             System.out.println("Solução encontrada");
+            System.out.println("fim segunda");
             Change.PrintTable(T);
+            System.out.println("--------------------------------------------------------------------");
         }
     }
 }

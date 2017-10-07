@@ -1,5 +1,7 @@
 package com.simplexapp.control;
 
+import com.simplexapp.control.util.Change;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Map;
@@ -82,15 +84,18 @@ public class Table {
         Cell cell;
         BigDecimal chkCellSup = null;
         BigDecimal chkCellInf = null;
-        for(int i=0; i<matrix[1].length;i++){
+        for(int i=0; i<matrix.length;i++){
             for(int j=0;j<matrix[1].length;i++){
+
+                System.out.println("i " + i);
+                System.out.println("j " + j);
                 cell=matrix[i][j];
                 if(cell.getCellInf()==null) {
                     for (int k=0;k<matrix.length;k++)
                         if (matrix[k][j].isChkCellSup())
                             chkCellSup=matrix[k][j].getCellSup();
 
-                    for (int k=0;k<matrix.length;k++)
+                    for (int k=0;k<matrix[1].length;k++)
                         if (matrix[i][k].isChkCellInf())
                             chkCellInf=matrix[i][k].getCellInf();
 

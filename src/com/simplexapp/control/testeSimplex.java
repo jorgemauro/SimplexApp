@@ -21,6 +21,8 @@ public class testeSimplex {
         Fases T= new Fases();
         Table Aux= new Table(lines,3);
         T.setMatrix(Aux.getMatrix());
+        SimplexExec.ExcFirst(T);
+
 
 
 

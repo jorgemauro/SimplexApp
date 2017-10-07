@@ -19,7 +19,7 @@ public final class Change {
     public static boolean signalComp(BigDecimal val1, BigDecimal val2){
         if(val1.signum()<0&&val2.signum()<0){
             return true;
-        }else if(val1.signum()<0&&val2.signum()<0){
+        }else if(val1.signum()>0&&val2.signum()>0){
             return true;
         }else if(val1.signum()==0&&val2.signum()==0){
             return true;
