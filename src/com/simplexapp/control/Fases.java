@@ -140,7 +140,6 @@ public class Fases extends Table {
     public Fases changePostion( int line, int col){
         Fases newTable= new Fases();
         newTable.setMatrix(matrix,bVar,nbVar);
-        System.out.println(line);
         int BVar = bVar[line];
         int NbVar =nbVar[col];
 

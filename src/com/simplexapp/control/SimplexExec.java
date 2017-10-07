@@ -44,12 +44,25 @@ public class SimplexExec {
         T.chkCellColInf(colAccept);
         T.mulSupInf();
         NewT=T.changePostion(TheLine,colAccept);
-        NewT.infForSup(TheLine,colAccept);
+
+        System.out.println("1");
+        Change.PrintTable(NewT);
+
+        System.out.println("--------------------------------------------------------------------");
+        NewT.infForSup(colAccept,TheLine);
+
+        System.out.println("2");
+        Change.PrintTable(NewT);
+
+        System.out.println("--------------------------------------------------------------------");
         NewT.SumNotSupAndInf(T,colAccept,TheLine);
 
-        System.out.println("fim troca");
-        Change.PrintTable(T);
+
+        System.out.println("3");
+        Change.PrintTable(NewT);
+
         System.out.println("--------------------------------------------------------------------");
+
         if(NewT.MlNegative()){
             SimplexExec.ExcFirst(NewT);
         }else {

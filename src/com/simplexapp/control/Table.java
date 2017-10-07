@@ -120,6 +120,8 @@ public BigDecimal getChkCellInf( int line) {
 }
     public Boolean MlNegative(){
         Boolean ans=false;
+        Table t=new Table();
+        t.setMatrix(matrix,bVar,nbVar);
         for(int i=1;i<matrix.length;i++){
             if(matrix[i][colML].getCellSup().compareTo(BigDecimal.ZERO)<0){
                 ans=true;
@@ -149,11 +151,11 @@ public void infForSup( int colAccept, int lineAccept){
 
 public void SumNotSupAndInf(Table T,int colAccept, int lineAccept){
     Cell[][] matrix1 = T.getMatrix();
-    Change.PrintTable(T);
+    System.out.println(lineAccept);
     for (int i=0;i<matrix.length;i++){
         for(int j=0;j<matrix[1].length;j++){
             if(i!=lineAccept && j!=colAccept){
-                matrix[i][j].setCellSup(matrix1[i][j].getCellSup().stripTrailingZeros().add(matrix1[i][j].getCellInf().stripTrailingZeros()));
+                matrix[i][j].setCellSup(matrix1[i][j].getCellSup().stripTrailingZeros().add(matrix1[i][j].getCellInf()));
             }
         }
     }
