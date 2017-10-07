@@ -47,26 +47,14 @@ public class SimplexExec {
 
         System.out.println("1");
         Change.PrintTable(NewT);
-
-        System.out.println("--------------------------------------------------------------------");
         NewT.infForSup(colAccept,TheLine);
-
-        System.out.println("2");
-        Change.PrintTable(NewT);
-
-        System.out.println("--------------------------------------------------------------------");
         NewT.SumNotSupAndInf(T,colAccept,TheLine);
 
-
-        System.out.println("3");
-        Change.PrintTable(NewT);
-
-        System.out.println("--------------------------------------------------------------------");
-
-        if(NewT.MlNegative()){
-            SimplexExec.ExcFirst(NewT);
+        T=NewT;
+        if(T.MlNegative()){
+            ExcFirst(NewT);
         }else {
-            SimplexExec.ExcSecond(NewT);
+            ExcSecond(NewT);
         }
 
     }
