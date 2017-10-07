@@ -20,7 +20,7 @@ public class testeSimplex {
 
         Fases T= new Fases();
         Table Aux= new Table(lines,3);
-        T.setMatrix(Aux.getMatrix());
+        T.setMatrix(Aux.getMatrix(),Aux.getbVar(),Aux.getNbVar());
         SimplexExec.ExcFirst(T);
 
 

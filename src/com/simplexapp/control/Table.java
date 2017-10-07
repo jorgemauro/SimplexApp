@@ -16,18 +16,18 @@ public class Table {
     public static final int linhaFO=0;
 
     public Table(Map<Integer,BigDecimal[]>fx,int nbVarq){
-        bVar=new int[fx.size()];
-        bVar[0]= linhaFO;
+        this.bVar=new int[fx.size()];
+        this.bVar[0]= linhaFO;
 
         int countp=0;
         for (Map.Entry<Integer,BigDecimal[]>pair: fx.entrySet()){
-            bVar[countp]=pair.getKey();
+            this.bVar[countp]=pair.getKey();
             countp++;
         }
 
-        nbVar=new int[nbVarq];
+        this.nbVar=new int[nbVarq];
         for(int i=0; i<nbVarq;i++){
-            nbVar[i]=i;
+            this.nbVar[i]=i;
         }
 
         matrix=new Cell[fx.size()][nbVarq];
@@ -56,7 +56,7 @@ public class Table {
     public void mulColInverse(int colAccept, BigDecimal inversAccept){
         Cell cell;
         inversAccept=inversAccept.multiply(new BigDecimal(-1).setScale(4,RoundingMode.HALF_UP));
-        for(int i=0;i<matrix[1].length; i++){
+        for(int i=0;i<matrix.length; i++){
             cell=matrix[i][colAccept];
             if(cell.getCellInf()==null){
                 cell.setCellInf(cell.getCellSup().stripTrailingZeros().multiply(inversAccept.setScale(4,RoundingMode.HALF_UP)));
@@ -84,26 +84,28 @@ public class Table {
         Cell cell;
         BigDecimal chkCellSup = null;
         BigDecimal chkCellInf = null;
-        for(int i=0; i<matrix.length;i++){
-            for(int j=0;j<matrix[1].length;i++){
-
-                System.out.println("i " + i);
-                System.out.println("j " + j);
-                cell=matrix[i][j];
+        for(int l=0;l<(matrix.length);l++){
+            for (int h=0;h<matrix[1].length;h++){
+                cell=matrix[l][h];
                 if(cell.getCellInf()==null) {
-                    for (int k=0;k<matrix.length;k++)
-                        if (matrix[k][j].isChkCellSup())
-                            chkCellSup=matrix[k][j].getCellSup();
+                    for (int k=0;k<matrix.length;k++) {
+                        if (matrix[k][h].isChkCellSup()) {
+                            chkCellSup = matrix[k][h].getCellSup();
+                        }
+                    }
+                    for (int k=0;k<matrix[1].length;k++) {
+                        if (matrix[l][k].isChkCellInf()) {
+                            chkCellInf = matrix[l][k].getCellInf();
+                        }
+                    }
+                    cell.setCellInf(chkCellSup.stripTrailingZeros().multiply(chkCellInf.stripTrailingZeros()).setScale(4, RoundingMode.HALF_UP));
 
-                    for (int k=0;k<matrix[1].length;k++)
-                        if (matrix[i][k].isChkCellInf())
-                            chkCellInf=matrix[i][k].getCellInf();
+                }
 
-                    cell.setCellInf(chkCellSup.stripTrailingZeros().multiply(chkCellInf.stripTrailingZeros()).setScale(4,RoundingMode.HALF_UP));
-                }
-                }
             }
         }
+        System.out.println("cheguei");
+    }
 public BigDecimal getChkCellInf( int line) {
     Cell cell;
     BigDecimal ans = new BigDecimal(0);
@@ -134,11 +136,11 @@ public void infForSup( int colAccept, int lineAccept){
             }
         }
 
-    for(int i=0;i<matrix[1].length;i++){
-        reMatrix[lineAccept][i].setCellSup(matrix[i][colAccept].getCellInf());
+    for(int j=0;j<matrix[1].length;j++){
+        reMatrix[lineAccept][j].setCellSup(matrix[lineAccept][j].getCellInf());
     }
     for(int i=0;i<matrix.length;i++){
-            reMatrix[i][colAccept].setCellSup(matrix[lineAccept][i].getCellInf());
+            reMatrix[i][colAccept].setCellSup(matrix[i][colAccept].getCellInf());
         }
 
     matrix=reMatrix;
@@ -147,6 +149,7 @@ public void infForSup( int colAccept, int lineAccept){
 
 public void SumNotSupAndInf(Table T,int colAccept, int lineAccept){
     Cell[][] matrix1 = T.getMatrix();
+    Change.PrintTable(T);
     for (int i=0;i<matrix.length;i++){
         for(int j=0;j<matrix[1].length;j++){
             if(i!=lineAccept && j!=colAccept){
@@ -159,8 +162,10 @@ public void SumNotSupAndInf(Table T,int colAccept, int lineAccept){
         return matrix;
     }
 
-    public void setMatrix(Cell[][] matrix) {
+    public void setMatrix(Cell[][] matrix, int[]bVar,int[] nbVar)  {
         this.matrix = matrix;
+        this.setNbVar(nbVar);
+        this.setbVar(bVar);
     }
 
     public void setbVar(int[] bVar) {

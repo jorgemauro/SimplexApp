@@ -21,9 +21,10 @@ public class SimplexExec {
                     colAccept=T.firstDotTwo(lineAccept);
                     if(colAccept>0){
                         TheLine=T.firstDotThree(colAccept);
-                        System.out.println("fim primeira fase");
+                        /*System.out.println("fim primeira fase");
                         Change.PrintTable(T);
                         System.out.println("--------------------------------------------------------------------");
+                       */
                         SimplexExec.ChangeExec(TheLine,colAccept,T);
 
                     }else{

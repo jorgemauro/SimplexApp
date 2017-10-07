@@ -33,7 +33,7 @@ public class Fases extends Table {
      */
     public int firstDotTwo(int line){
         int colAcc = -1;
-        for (int i=1; i < matrix.length; i++){
+        for (int i=1; i < matrix[1].length; i++){
             if(matrix[line][i].getCellSup().compareTo(BigDecimal.ZERO)<0){
                 colAcc=i;
                 break;
@@ -96,7 +96,6 @@ public class Fases extends Table {
      */
     public int secondDotTwo(int colAccept){
         int lineAccept=-1;
-        System.out.println(matrix.length);
         for (int i=0;i<matrix.length;i++){
             if(matrix[i][colML].getCellSup().compareTo(BigDecimal.ZERO)>0){
                 return lineAccept=i;
@@ -140,8 +139,8 @@ public class Fases extends Table {
      */
     public Fases changePostion( int line, int col){
         Fases newTable= new Fases();
-        newTable.setMatrix(matrix);
-
+        newTable.setMatrix(matrix,bVar,nbVar);
+        System.out.println(line);
         int BVar = bVar[line];
         int NbVar =nbVar[col];
 
