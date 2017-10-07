@@ -21,14 +21,7 @@ public class testeSimplex {
         Fases T= new Fases();
         Table Aux= new Table(lines,3);
         T.setMatrix(Aux.getMatrix());
-        Change.PrintTable(T);
-        int line_Accept= T.firstDotOne();
-        int col_Accept=T.firstDotTwo(line_Accept);
-        System.out.println("ColAccept : " + col_Accept);
-        System.out.println("lineAccept : " + line_Accept);
-        System.out.println("Cell inverse : " + T.getMatrix()[line_Accept][col_Accept].getCellSup());
-        T.mulColInverse(col_Accept,T.getMatrix()[line_Accept][col_Accept].getCellSup());
-        Change.PrintTable(T);
+
 
 
 

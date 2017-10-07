@@ -51,16 +51,25 @@ public int secondDotTwo(int colAccept){
     return lineAccept;
 }
 
-
-public void inveseMatrix(int colAccept, int LineAccept){
-    Cell[][] matrixCpy= new Cell[matrix.length][matrix[1].length];
-
-    for (int i=0;i<matrixCpy.length;i++){
-        for (int j=0;j<matrixCpy[1].length;j++){
+public int firstDotThree(int colAccept){
+    BigDecimal LessQ= new BigDecimal(Integer.MAX_VALUE);
+    BigDecimal ActQ= new BigDecimal(0);
+    int lineAccept=-1;
+    for(int i=1;i<matrix.length;i++){
+        BigDecimal MLSup=matrix[i][colML].getCellSup();
+        BigDecimal ColAcceptSup= matrix[i][colAccept].getCellSup();
+        if(ColAcceptSup.floatValue()>0 && Change.signalComp(MLSup,ColAcceptSup)){
+            ActQ=matrix[i][colML].getCellSup().divide(matrix[i][colAccept].getCellSup(),4,RoundingMode.HALF_UP);
+            if(ActQ.compareTo(LessQ)<0){
+                LessQ=ActQ;
+                lineAccept=i;
+                matrix[i][colAccept].setAceptCell(true);
+            }
         }
     }
+    return lineAccept;
 }
-    public int firstOrTwoDotThree(int colAccpt){
+    public int SecondDotThree(int colAccpt){
         int lineAccept=-1;
         BigDecimal lessQ= new BigDecimal(Integer.MAX_VALUE);
         BigDecimal actQ= new BigDecimal(0);
@@ -80,5 +89,23 @@ public void inveseMatrix(int colAccept, int LineAccept){
         }
         return lineAccept;
 
+    }
+
+    public Fases changePostion( int line, int col){
+        Fases newTable= new Fases();
+        newTable.setMatrix(matrix);
+
+        int BVar = bVar[line];
+        int NbVar =nbVar[col];
+
+        int[] NewBVars = bVar;
+        int[] NewNbVars = nbVar;
+        NewBVars[line]=NbVar;
+        NewNbVars[col]=BVar;
+
+        newTable.setbVar(NewBVars);
+        newTable.setNbVar(NewNbVars);
+
+        return newTable;
     }
 }

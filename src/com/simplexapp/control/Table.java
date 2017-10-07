@@ -129,13 +129,13 @@ public void infForSup( int colAccept, int lineAccept){
             }
         }
 
-        for(int i=0;i<matrix.length;i++){
-            reMatrix[i][colAccept].setCellSup(matrix[lineAccept][i].getCellInf());
-        }
-
     for(int i=0;i<matrix[1].length;i++){
         reMatrix[lineAccept][i].setCellSup(matrix[i][colAccept].getCellInf());
     }
+    for(int i=0;i<matrix.length;i++){
+            reMatrix[i][colAccept].setCellSup(matrix[lineAccept][i].getCellInf());
+        }
+
     matrix=reMatrix;
 
 }
