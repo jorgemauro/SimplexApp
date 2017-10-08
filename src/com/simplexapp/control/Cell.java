@@ -21,7 +21,9 @@ public class Cell {
     this.AceptCell=false;
     }
     public Cell(){
-
+        this.ChkCellInf= false;
+        this.ChkCellSup=false;
+        this.AceptCell=false;
     }
     //is
     public Boolean isAceptCell() {
@@ -44,7 +46,6 @@ public class Cell {
         return CellSup;
     }
 //set
-
     public void setAceptCell(Boolean aceptCell) {
 
     }

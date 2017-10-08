@@ -84,6 +84,8 @@ public class Table {
         Cell cell;
         BigDecimal chkCellSup = null;
         BigDecimal chkCellInf = null;
+        Table T=new Table();
+        T.setMatrix(matrix,bVar,nbVar);
         for(int l=0;l<(matrix.length);l++){
             for (int h=0;h<matrix[1].length;h++){
                 cell=matrix[l][h];
@@ -98,26 +100,20 @@ public class Table {
                             chkCellInf = matrix[l][k].getCellInf();
                         }
                     }
+                    if(l==3){
+                        Change.PrintTable(T);
+                        System.out.println("LIne: "+l);
+                        System.out.println("Col "+h);
+                        System.out.println("sup: "+chkCellSup.toString());
+                        System.out.println("inf: "+chkCellInf.toString());
+                    }
                     cell.setCellInf(chkCellSup.stripTrailingZeros().multiply(chkCellInf.stripTrailingZeros()).setScale(4, RoundingMode.HALF_UP));
 
                 }
 
             }
         }
-        System.out.println("cheguei");
     }
-public BigDecimal getChkCellInf( int line) {
-    Cell cell;
-    BigDecimal ans = new BigDecimal(0);
-    for (int i = 0; i < matrix[1].length; i++) {
-        cell = matrix[line][i];
-        if (cell.isChkCellInf()) {
-            ans = cell.getCellInf();
-        }
-    }
-
-    return ans;
-}
     public Boolean MlNegative(){
         Boolean ans=false;
         Table t=new Table();
@@ -151,7 +147,6 @@ public void infForSup( int colAccept, int lineAccept){
 
 public void SumNotSupAndInf(Table T,int colAccept, int lineAccept){
     Cell[][] matrix1 = T.getMatrix();
-    System.out.println(lineAccept);
     for (int i=0;i<matrix.length;i++){
         for(int j=0;j<matrix[1].length;j++){
             if(i!=lineAccept && j!=colAccept){

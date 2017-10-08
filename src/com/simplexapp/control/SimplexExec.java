@@ -21,15 +21,20 @@ public class SimplexExec {
                     colAccept=T.firstDotTwo(lineAccept);
                     if(colAccept>0){
                         TheLine=T.firstDotThree(colAccept);
-                        /*System.out.println("fim primeira fase");
+                        System.out.println("fim primeira fase");
                         Change.PrintTable(T);
                         System.out.println("--------------------------------------------------------------------");
-                       */
+
                         SimplexExec.ChangeExec(TheLine,colAccept,T);
 
                     }else{
-                        //Sem solução
+                        System.out.println("Sem solução");
+                        Change.PrintTable(T);
+                        System.out.println("--------------------------------------------------------------------");
+                        System.out.println("Sem solução");
                     }
+                }else{
+                    SimplexExec.ExcSecond(T);
                 }
 
     }
@@ -44,14 +49,16 @@ public class SimplexExec {
         T.chkCellColInf(colAccept);
         T.mulSupInf();
         NewT=T.changePostion(TheLine,colAccept);
-
-        System.out.println("1");
-        Change.PrintTable(NewT);
         NewT.infForSup(colAccept,TheLine);
+        System.out.println("T");
+        Change.PrintTable(T);
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("NewT");
+        Change.PrintTable(NewT);
+        System.out.println("--------------------------------------------------------------------");
         NewT.SumNotSupAndInf(T,colAccept,TheLine);
 
-        T=NewT;
-        if(T.MlNegative()){
+        if(NewT.MlNegative()){
             ExcFirst(NewT);
         }else {
             ExcSecond(NewT);
