@@ -50,12 +50,6 @@ public class SimplexExec {
         T.mulSupInf();
         NewT=T.changePostion(TheLine,colAccept);
         NewT.infForSup(colAccept,TheLine);
-        System.out.println("T");
-        Change.PrintTable(T);
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("NewT");
-        Change.PrintTable(NewT);
-        System.out.println("--------------------------------------------------------------------");
         NewT.SumNotSupAndInf(T,colAccept,TheLine);
 
         if(NewT.MlNegative()){

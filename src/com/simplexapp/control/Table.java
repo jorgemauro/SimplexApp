@@ -67,8 +67,14 @@ public class Table {
 
     public void chkCellColInf(int colAccept){
         Cell cell;
-        for(int i=0;i<matrix[i].length;i++){
+        for(int i=0;i<matrix.length;i++){
             cell=matrix[i][colAccept];
+            System.out.println("CellCol: ");
+            Change.PrintCell(cell);
+            System.out.println("");
+            System.out.println("Marcado: "+cell.getCellInf());
+            System.out.println("line: "+i);
+            System.out.println("--------------------------------------------------");
             cell.setChkCellInf(true);
         }
     }
@@ -76,6 +82,12 @@ public class Table {
         Cell cell;
         for(int i=0;i<matrix[i].length;i++){
             cell=matrix[lineAccept][i];
+
+            System.out.println("CellLine: ");
+            Change.PrintCell(cell);
+            System.out.println("");
+            System.out.println("Marcado: "+cell.getCellSup());
+            System.out.println("col: "+i);
             cell.setChkCellSup(true);
         }
     }
