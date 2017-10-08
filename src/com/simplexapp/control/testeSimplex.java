@@ -14,9 +14,9 @@ public class testeSimplex {
         BigDecimal[] x5= new BigDecimal[]{new BigDecimal(3), new BigDecimal(0),new BigDecimal(1)};
 
         lines.put(0,Fx);
-        lines.put(1,x3);
         lines.put(2,x4);
         lines.put(3,x5);
+        lines.put(1,x3);
 
         Fases T= new Fases();
         Table Aux= new Table(lines,3);
